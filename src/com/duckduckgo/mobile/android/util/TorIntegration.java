@@ -6,9 +6,10 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.webkit.WebView;
+
 import com.duckduckgo.mobile.android.network.DDGNetworkConstants;
+
 import info.guardianproject.onionkit.ui.OrbotHelper;
 import info.guardianproject.onionkit.web.WebkitProxy;
 
@@ -68,7 +69,7 @@ public class TorIntegration {
 
     private void enableOrbotProxy() {
         try {
-            WebkitProxy.setProxy("com.duckduckgo.mobile.android.DDGApplication", DDGNetworkConstants.getWebView().getContext().getApplicationContext(), DDGNetworkConstants.getWebView(), DDGNetworkConstants.PROXY_HOST, DDGNetworkConstants.PROXY_HTTP_PORT);
+            WebkitProxy.setProxy("com.duckduckgo.mobile.android.DDGApplication", DDGNetworkConstants.getWebView().getContext().getApplicationContext(), DDGNetworkConstants.PROXY_HOST, DDGNetworkConstants.PROXY_HTTP_PORT);
         } catch (Exception e) {
             // what should we do here? Discuss!
             e.printStackTrace();
@@ -77,7 +78,7 @@ public class TorIntegration {
 
     public void enableOrbotProxy(WebView webView) {
         try {
-            WebkitProxy.setProxy("com.duckduckgo.mobile.android.DDGApplication", webView.getContext().getApplicationContext(), webView, DDGNetworkConstants.PROXY_HOST, DDGNetworkConstants.PROXY_HTTP_PORT);
+            WebkitProxy.setProxy("com.duckduckgo.mobile.android.DDGApplication", webView.getContext().getApplicationContext(), DDGNetworkConstants.PROXY_HOST, DDGNetworkConstants.PROXY_HTTP_PORT);
         } catch (Exception e) {
             // what should we do here? Discuss!
             e.printStackTrace();
@@ -165,7 +166,7 @@ public class TorIntegration {
         downloadDialog.setPositiveButton(info.guardianproject.onionkit.R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                context.startActivityForResult(orbotHelper.getOrbotStartIntent(), 1);
+                orbotHelper.requestOrbotStart(context);
             }
         });
         downloadDialog.setNegativeButton(info.guardianproject.onionkit.R.string.no, new DialogInterface.OnClickListener() {
